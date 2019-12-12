@@ -25,7 +25,13 @@ jobs:
             - name: Compile TypeScript
               run: npm run build
 
+            - name: Zip artifacts
+              uses: montudor/action-zip@v0.1.0
+              with:
+                  args: zip -r dist.zip dist package.json
+
             - name: Upload artifacts
               uses: actions/upload-artifact@v1
               with:
-                  path: dist
+                  name: dist.zip
+                  path: dist.zip
