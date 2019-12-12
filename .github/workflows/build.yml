@@ -11,6 +11,7 @@ jobs:
                 node_version: [12]
 
         steps:
+            - name: Checkout master
             - uses: actions/checkout@v1
 
             - name: Use Node.js ${{ matrix.node_version }}
@@ -23,3 +24,8 @@ jobs:
 
             - name: Compile TypeScript
               run: npm run build
+
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v1
+              with:
+                  path: dist
