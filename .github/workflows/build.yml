@@ -26,9 +26,7 @@ jobs:
               run: npm run build
 
             - name: Zip artifacts
-              uses: montudor/action-zip@v0.1.0
-              with:
-                  args: zip -r dist.zip dist package.json
+              run: zip -r dist.zip dist package.json
 
             - name: Upload artifacts
               uses: actions/upload-artifact@v1
