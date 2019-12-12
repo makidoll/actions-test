@@ -5,7 +5,7 @@ on: [push]
 jobs:
     build:
         name: "Build"
-        runs-on:
+        runs-on: ubuntu-latest
         strategy:
             matrix:
                 node_version: [12]
@@ -35,6 +35,7 @@ jobs:
               with:
                   name: My awesome program
                   path: dist.zip
+
             - name: Discord notification
               env:
                   DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
