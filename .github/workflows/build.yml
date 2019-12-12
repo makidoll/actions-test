@@ -5,7 +5,7 @@ on: [push]
 jobs:
     build:
         name: "Build"
-        runs-on: ubuntu-latest
+        runs-on:
         strategy:
             matrix:
                 node_version: [12]
@@ -35,3 +35,9 @@ jobs:
               with:
                   name: My awesome program
                   path: dist.zip
+            - name: Discord notification
+              env:
+                  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+              uses: Ilshidur/action-discord@master
+              with:
+                  args: "{{ EVENT_PAYLOAD.repository.full_name }} has been build!"
