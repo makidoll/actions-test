@@ -1,0 +1,13 @@
+name: Master CI Build
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compile TypeScript
+        run: npm run build
